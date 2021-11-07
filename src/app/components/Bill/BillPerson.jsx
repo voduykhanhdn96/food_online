@@ -1,24 +1,24 @@
-import { useState } from "react"
-import { Menu, Segment } from "semantic-ui-react"
-import BillName from "./BillName"
-import BillPersonDetail from "./BillPersonDetail"
-import { Table } from "semantic-ui-react"
+import { useState } from "react";
+import { Menu, Segment } from "semantic-ui-react";
+import BillName from "./BillName";
+import BillPersonDetail from "./BillPersonDetail";
+import { Table } from "semantic-ui-react";
 
 const BillPerson = ({ orderPerson }) => {
-  const [activePerson, setActivePerson] = useState(orderPerson[0].userId)
+  const [activePerson, setActivePerson] = useState(orderPerson[0].userId);
 
-  const handlePersonClick = name => {
-    setActivePerson(name)
-  }
+  const handlePersonClick = (name) => {
+    setActivePerson(name);
+  };
 
-  const orderDetail = orderPerson.filter(order =>
+  const orderDetail = orderPerson.filter((order) =>
     order.userId.includes(activePerson)
-  )
+  );
 
   return (
     <div>
       <Menu attached="top" tabular>
-        {orderPerson.map(person => (
+        {orderPerson.map((person) => (
           <BillName
             handlePersonClick={handlePersonClick}
             activePerson={activePerson}
@@ -42,10 +42,12 @@ const BillPerson = ({ orderPerson }) => {
           </Table.Header>
 
           {orderDetail.length !== 0 &&
-            orderDetail[0].items.map(item => <BillPersonDetail item={item} />)}
+            orderDetail[0].items.map((item) => (
+              <BillPersonDetail key={item.itemId} item={item} />
+            ))}
         </Table>
       </Segment>
     </div>
-  )
-}
-export default BillPerson
+  );
+};
+export default BillPerson;

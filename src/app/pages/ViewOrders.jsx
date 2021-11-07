@@ -1,18 +1,19 @@
-import { AgGridReact } from "ag-grid-react"
-import { useMemo, useRef } from "react"
-import ActionCellRenderer from "./ViewOrders/ActionCellRenderer"
-import StatusCellRenderer from "./ViewOrders/StatusCellRenderer"
-import OrderDetailModal from "./ViewOrders/OrderDetailModal"
-import SectionHeader from "../components/SectionHeader"
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
-import { getListOrder, getShopDetail } from "../store/actions/admin-action"
+import { AgGridReact } from "ag-grid-react";
+import { useMemo, useRef } from "react";
+import ActionCellRenderer from "./ViewOrders/ActionCellRenderer";
+import StatusCellRenderer from "./ViewOrders/StatusCellRenderer";
+import OrderDetailModal from "./ViewOrders/OrderDetailModal";
+import SectionHeader from "../components/SectionHeader";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getListOrder, getShopDetail } from "../store/actions/admin-action";
+import { useParams } from "react-router-dom";
 // import { formatCurrency } from "./../helpers/number-helper"
 
 const ViewOrders = () => {
-  const dispatch = useDispatch()
-  const auth = useSelector(state => state.auth)
-  const order = useSelector(state => state.admin.orderList)
+  const dispatch = useDispatch();
+  const param = useParams();
+  const order = useSelector((state) => state.admin.orderList);
   // never changes, so we can use useMemo
   const columnDefs = useMemo(
     () => [
@@ -27,12 +28,12 @@ const ViewOrders = () => {
         pinned: "right",
         cellRenderer: "actionCellRenderer",
         cellRendererParams: {
-          onViewOrder: orderId => viewOrder(orderId),
+          onViewOrder: (orderId) => viewOrder(orderId),
         },
       },
     ],
     []
-  )
+  );
 
   const defaultColDef = useMemo(
     () => ({
@@ -40,24 +41,24 @@ const ViewOrders = () => {
       sortable: true,
     }),
     []
-  )
+  );
 
   useEffect(() => {
-    dispatch(getShopDetail(auth.shopId))
-  }, [auth, dispatch])
+    dispatch(getShopDetail(param.shopId));
+  }, [param.shopId, dispatch]);
 
   useEffect(() => {
-    dispatch(getListOrder(auth.shopId))
-  }, [dispatch, auth.shopId])
+    dispatch(getListOrder(param.shopId));
+  }, [dispatch, param.shopId]);
 
   // changes, needs to be state
-  const gridHeight = window.innerHeight
+  const gridHeight = window.innerHeight;
 
-  const modalRef = useRef(null)
+  const modalRef = useRef(null);
 
-  const viewOrder = id => {
-    modalRef.current.open(id)
-  }
+  const viewOrder = (id) => {
+    modalRef.current.open(id);
+  };
 
   return (
     <>
@@ -81,7 +82,7 @@ const ViewOrders = () => {
       </div>
       <OrderDetailModal listOrder={order} ref={modalRef}></OrderDetailModal>
     </>
-  )
-}
+  );
+};
 
-export default ViewOrders
+export default ViewOrders;

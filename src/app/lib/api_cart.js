@@ -1,15 +1,15 @@
-const BACKEND_DOMAIN = "http://localhost:8080/api"
+const BACKEND_DOMAIN = "http://localhost:8080/api";
 
 export async function getCartData(cartId) {
   const response = await fetch(
     `${BACKEND_DOMAIN}/Cart/` + cartId + `?getShop=true`
-  )
-  const data = await response.json()
+  );
+  const data = await response.json();
   if (!response.ok) {
-    throw new Error(data.message || "Could not fetch quotes.")
+    throw new Error(data.message || "Could not fetch quotes.");
   }
 
-  return data
+  return data;
 }
 
 export async function existCartCustomerWithShop(customerId, shopId) {
@@ -20,13 +20,13 @@ export async function existCartCustomerWithShop(customerId, shopId) {
       customerId: customerId,
       shopId: shopId,
     }),
-  })
+  });
 
   if (!response.ok) {
-    throw new Error("Could not fetch quotes.")
+    throw new Error("Could not fetch quotes.");
   }
 
-  return response
+  return response;
 }
 
 export async function createCart(customerId, shopId) {
@@ -37,15 +37,15 @@ export async function createCart(customerId, shopId) {
       customerId: customerId,
       shopId: shopId,
     }),
-  })
+  });
 
-  const data = await response.json()
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Delete shop is fail")
+    throw new Error(data.message || "Delete shop is fail");
   }
 
-  return data
+  return data;
 }
 
 export async function submitItem(items, customerId, cartId) {
@@ -57,13 +57,13 @@ export async function submitItem(items, customerId, cartId) {
       items: items,
       cartId: cartId,
     }),
-  })
-  const data = await response.json()
+  });
+  const data = await response.json();
   if (!response.ok) {
-    throw new Error(data.message || "Delete shop is fail")
+    throw new Error(data.message || "Delete shop is fail");
   }
 
-  return data
+  return data;
 }
 
 export async function unSubmitItem(customerId, cartId) {
@@ -74,13 +74,13 @@ export async function unSubmitItem(customerId, cartId) {
       customerId: customerId,
       cartId: cartId,
     }),
-  })
-  const data = await response.json()
+  });
+  const data = await response.json();
   if (!response.ok) {
-    throw new Error(data.message || "Delete shop is fail")
+    throw new Error(data.message || "Delete shop is fail");
   }
 
-  return data
+  return data;
 }
 
 export async function addItem(customerId, itemId, cartId) {
@@ -92,16 +92,16 @@ export async function addItem(customerId, itemId, cartId) {
       itemId: itemId,
       cartId: cartId,
     }),
-  })
-  const data = await response.json()
+  });
+  const data = await response.json();
   if (data.errorMessage) {
-    throw new Error(data.errorMessage)
+    throw new Error(data.errorMessage);
   }
   if (!response.ok) {
-    throw new Error(data.message || "Add to cart is fail")
+    throw new Error(data.message || "Add to cart is fail");
   }
 
-  return data
+  return data;
 }
 
 export async function removeItem(customerId, itemId, cartId) {
@@ -113,13 +113,13 @@ export async function removeItem(customerId, itemId, cartId) {
       itemId: itemId,
       cartId: cartId,
     }),
-  })
+  });
 
-  const data = await response.json()
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Delete shop is fail")
+    throw new Error(data.message || "Delete shop is fail");
   }
 
-  return data
+  return data;
 }
