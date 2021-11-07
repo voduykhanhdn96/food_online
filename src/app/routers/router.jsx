@@ -2,13 +2,13 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 import { Redirect } from "react-router"
 import AdminLayoutRoute from "./../layouts/AdminLayout"
-import CustomerLayoutRoute from "./../layouts/CustomerLayout"
+import CustomerLayout from "./../layouts/CustomerLayout"
 import NotFound from "./../pages/404"
 import ViewOrders from "../pages/ViewOrders"
 import ViewMenu from "./../pages/ViewMenu"
 import Stores from "../pages/Stores"
 import Store from "../pages/Store"
-import DefaultLayoutRoute from "./../layouts/DefaultLayout"
+import BlankLayout from "./../layouts/BlankLayout"
 import SignIn from "../pages/SignIn"
 import SignUp from "../pages/SignUp"
 import { useSelector } from "react-redux"
@@ -25,12 +25,12 @@ const Router = () => {
           {!auth.customerId && <Redirect to="/sign-in" />}
         </Route>
         <Route path="/cart/:cartId" exact>
-          {auth.customerId && <CustomerLayoutRoute component={Store} />}
-          {!auth.customerId && <DefaultLayoutRoute component={SignIn} />}
+          {auth.customerId && <CustomerLayout component={Store} />}
+          {!auth.customerId && <BlankLayout component={SignIn} />}
         </Route>
         <Route path="/store/:shopId" exact>
-          {auth.customerId && <CustomerLayoutRoute component={Store} />}
-          {!auth.customerId && <DefaultLayoutRoute component={SignIn} />}
+          {auth.customerId && <CustomerLayout component={Store} />}
+          {!auth.customerId && <BlankLayout component={SignIn} />}
         </Route>
         <AdminLayoutRoute
           exact
@@ -42,17 +42,13 @@ const Router = () => {
           path="/admin/:shopId/view-menu"
           component={ViewMenu}
         />
-        <CustomerLayoutRoute exact path="/stores" component={Stores} />
-        <CustomerLayoutRoute exact path="/orders" component={Orders} />
-        <CustomerLayoutRoute
-          exact
-          path="/order/:orderId"
-          component={OrderDetail}
-        />
-        <CustomerLayoutRoute exact path="/store/:shopId" component={Store} />
-        <CustomerLayoutRoute exact path="/cart/:cartId" component={Store} />
-        <DefaultLayoutRoute exact path="/sign-in" component={SignIn} />
-        <DefaultLayoutRoute exact path="/sign-up" component={SignUp} />
+        <CustomerLayout exact path="/stores" component={Stores} />
+        <CustomerLayout exact path="/orders" component={Orders} />
+        <CustomerLayout exact path="/order/:orderId" component={OrderDetail} />
+        <CustomerLayout exact path="/store/:shopId" component={Store} />
+        <CustomerLayout exact path="/cart/:cartId" component={Store} />
+        <BlankLayout exact path="/sign-in" component={SignIn} />
+        <BlankLayout exact path="/sign-up" component={SignUp} />
         <Route path="*">
           <NotFound />
         </Route>
