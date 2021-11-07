@@ -1,5 +1,5 @@
-import { loginShop } from "../../lib/api_shop"
-import { loginCustomer } from "../../lib/api_customer"
+import { loginShop } from "../../apis/shop-api"
+import { loginCustomer } from "../../apis/customer-api"
 
 export const loginAction = (phoneNumber, typeLogin) => {
   return async dispatch => {

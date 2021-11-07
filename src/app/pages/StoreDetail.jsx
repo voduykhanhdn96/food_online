@@ -16,6 +16,7 @@ import { useLocation } from "react-router-dom"
 import { LogLevel, HubConnectionBuilder } from "@microsoft/signalr"
 import { useCallback } from "react"
 import { useHistory } from "react-router"
+import { SIGNALR_HUB_URL } from "./../../env"
 
 const StoreDetail = () => {
   const param = useParams()
@@ -37,7 +38,7 @@ const StoreDetail = () => {
 
   const startCons = useCallback(async () => {
     const connection = new HubConnectionBuilder()
-      .withUrl("http://localhost:8080/hubs/cart?cart=" + shop.cartId, {
+      .withUrl(`${SIGNALR_HUB_URL}/cart?cart=` + shop.cartId, {
         withCredentials: false,
       })
       .configureLogging(LogLevel.Information)

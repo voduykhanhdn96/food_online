@@ -5,6 +5,7 @@ import { Button, Image, Popup, Segment } from "semantic-ui-react"
 import StoreInformation from "../StoreInformation"
 import ModifyStoreModal from "./RightSideBar/ModifyStoreModal"
 import ShareModal from "./RightSideBar/ShareModal"
+import { APP_URL } from "./../../../env"
 
 const RightSideBar = () => {
   const param = useParams()
@@ -21,7 +22,7 @@ const RightSideBar = () => {
   }
 
   const share = () => {
-    shareRef.current.open("http://localhost:3000/store/" + id)
+    shareRef.current.open(`${APP_URL}/store/` + id)
   }
 
   const copy = e => {

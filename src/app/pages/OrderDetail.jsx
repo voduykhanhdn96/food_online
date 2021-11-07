@@ -7,6 +7,7 @@ import Receipt from "../components/Receipt"
 import { generateId } from "../helpers/crypto-helper"
 import { LogLevel, HubConnectionBuilder } from "@microsoft/signalr"
 import ProgressStatus from "../components/ProgressStatus/ProgressStatus"
+import { SIGNALR_HUB_URL } from "./../../env"
 
 const OrderDetail = () => {
   const { orderId } = useParams()
@@ -14,7 +15,7 @@ const OrderDetail = () => {
 
   const startCons = useCallback(async () => {
     const connection = new HubConnectionBuilder()
-      .withUrl("http://localhost:8080/hubs/order?order=" + orderId, {
+      .withUrl(`${SIGNALR_HUB_URL}/order?order=` + orderId, {
         withCredentials: false,
       })
       .configureLogging(LogLevel.Information)

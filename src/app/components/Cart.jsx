@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import { useRef } from "react"
 import CartItemGroup from "./CartItemGroup"
 import CheckOutModal from "./Checkout/CheckOutModal"
+import { APP_URL } from "./../../env"
 
 const Cart = ({ cart, removeItem, isChange }) => {
   const modalRef = useRef(null)
@@ -24,7 +25,7 @@ const Cart = ({ cart, removeItem, isChange }) => {
   }, [dispatch, itemsInCart])
 
   const share = () => {
-    navigator.clipboard.writeText("http://localhost:3000/cart/" + cartId)
+    navigator.clipboard.writeText(`${APP_URL}/cart/` + cartId)
   }
   return (
     <>

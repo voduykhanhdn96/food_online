@@ -1,15 +1,15 @@
-import { createShop, getShopById, updateShop } from "../../lib/api_shop";
+import { createShop, getShopById, updateShop } from "../../apis/shop-api";
 import {
   createItem,
   updateItem,
   activeItem,
   deleteItem,
-} from "../../lib/api_item";
+} from "../../apis/item-api";
 import {
   changeStatus,
   getAllOrderWithStore,
   cancel,
-} from "../../lib/api_order";
+} from "../../apis/order-api";
 
 export const getListOrder = (shopId) => {
   return async (dispatch) => {

@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom"
 import { LogLevel, HubConnectionBuilder } from "@microsoft/signalr"
 import { useCallback } from "react"
 import { Segment } from "semantic-ui-react"
+import { SIGNALR_HUB_URL } from "./../../env"
 
 const ViewOrders = () => {
   const dispatch = useDispatch()
@@ -47,7 +48,7 @@ const ViewOrders = () => {
 
   const startCons = useCallback(async () => {
     const connection = new HubConnectionBuilder()
-      .withUrl("http://localhost:8080/hubs/shop?shop=" + param.shopId, {
+      .withUrl(`${SIGNALR_HUB_URL}/shop?shop=` + param.shopId, {
         withCredentials: false,
       })
       .configureLogging(LogLevel.Information)
