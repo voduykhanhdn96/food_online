@@ -15,11 +15,13 @@ import {
 import { useDispatch, useSelector } from "react-redux"
 import { registerShop } from "../store/actions/admin-action"
 import { registerCustomer } from "../store/actions/shop-action"
+import { loginAction } from "../store/actions/auth-action"
 
 const Login = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const notification = useSelector(state => state.notification)
+  const authUser = useSelector(state => state.auth)
 
   const { toastSuccess, toastInfo } = useToast()
 
@@ -27,6 +29,7 @@ const Login = () => {
   const refPhoneNumber = useRef()
 
   const [isClickReg, setIsClickReg] = useState(false)
+  const [isLogin, setIsLogin] = useState(false)
   const [isShop, setIsShop] = useState(true)
 
   const signIn = () => {
@@ -39,7 +42,6 @@ const Login = () => {
 
   const submit = () => {
     setIsClickReg(true)
-    // Validate
 
     // submit
     var formData = new FormData()
@@ -56,14 +58,40 @@ const Login = () => {
     if (isClickReg) {
       if (notification.status === "completed" && !notification.error) {
         toastSuccess("Register is success !")
-        history.push("/sign-in")
+        if (isShop) {
+          dispatch(loginAction(refPhoneNumber.current.value, "SHOP"))
+        } else {
+          dispatch(loginAction(refPhoneNumber.current.value, "USER"))
+        }
+        setIsLogin(true)
+        // history.push("/sign-in");
+        setIsClickReg(false)
       }
       if (notification.status === "completed" && notification.error) {
         toastInfo(notification.error)
         setIsClickReg(false)
       }
     }
-  }, [history, notification, isShop, toastInfo, toastSuccess, isClickReg])
+    if (isLogin) {
+      if (notification.status === "completed" && !notification.error) {
+        if (isShop) {
+          history.push("/admin/" + authUser.shopId + "/view-menu")
+        } else {
+          history.push("/store")
+        }
+      }
+    }
+  }, [
+    history,
+    isLogin,
+    authUser.shopId,
+    dispatch,
+    notification,
+    isShop,
+    toastInfo,
+    toastSuccess,
+    isClickReg,
+  ])
 
   const label = isShop
     ? "Register as a customer?"

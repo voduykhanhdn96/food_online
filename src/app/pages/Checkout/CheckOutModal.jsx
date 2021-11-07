@@ -3,13 +3,11 @@ import { Button, Modal, Form } from "semantic-ui-react"
 import ViewContent from "./ViewContent"
 import { useDispatch } from "react-redux"
 import { newOrder } from "../../store/actions/shop-action"
-import { useHistory } from "react-router"
 import useToast from "../../hooks/useToast"
 
 const CheckOutModal = forwardRef((props, ref) => {
   const [open, setOpen] = useState(false)
   const [infomation, setInfomation] = useState(null)
-  const history = useHistory()
 
   const { toastSuccess, toastError } = useToast()
 
@@ -28,7 +26,6 @@ const CheckOutModal = forwardRef((props, ref) => {
       toastError(data.title)
     } else {
       toastSuccess("Order is success !")
-      history.push("/order/" + data.orderId)
     }
   }
 

@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux"
-import { Container, Grid, Header, Segment } from "semantic-ui-react"
+import { useDispatch } from "react-redux";
+import { Container, Grid, Header, Segment } from "semantic-ui-react";
 import {
   submitItemOfCustomer,
   unSubmitItemOfCustomer,
-} from "../store/actions/shop-action"
-import CartItem from "./CartItem"
+} from "../store/actions/shop-action";
+import CartItem from "./CartItem";
 
 const CartItemGroup = ({
   group,
@@ -14,18 +14,18 @@ const CartItemGroup = ({
   isChange,
   customerId,
 }) => {
-  const { userName, userId, items } = group
-  const dispatch = useDispatch()
+  const { userName, userId, items } = group;
+  const dispatch = useDispatch();
 
-  const onChangeStatusFood = e => {
+  const onChangeStatusFood = (e) => {
+    isChange();
     if (e.target.checked) {
       // Submit
-      dispatch(submitItemOfCustomer(items, userId, cartId))
+      dispatch(submitItemOfCustomer(items, userId, cartId));
     } else {
-      dispatch(unSubmitItemOfCustomer(userId, cartId))
+      dispatch(unSubmitItemOfCustomer(userId, cartId));
     }
-    isChange()
-  }
+  };
 
   return (
     <>
@@ -47,7 +47,7 @@ const CartItemGroup = ({
         <Container>
           <Grid>
             {items &&
-              items.map(item => (
+              items.map((item) => (
                 <CartItem
                   removeItem={removeItem}
                   key={item.itemId}
@@ -59,7 +59,7 @@ const CartItemGroup = ({
         </Container>
       </Segment>
     </>
-  )
-}
+  );
+};
 
-export default CartItemGroup
+export default CartItemGroup;

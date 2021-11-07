@@ -1,35 +1,41 @@
-import { useRef } from "react"
-import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { Button, Image } from "semantic-ui-react"
-import StoreInforField from "../../components/StoreInforField"
-import ModifyStoreModal from "./RightSideBar/ModifyStoreModal"
+import { useRef } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Button, Image, Popup } from "semantic-ui-react";
+import StoreInforField from "../../components/StoreInforField";
+import ModifyStoreModal from "./RightSideBar/ModifyStoreModal";
+import ShareModal from "./RightSideBar/ShareModal";
 
 const RightSideBar = () => {
-  const param = useParams()
-  const modalRef = useRef(null)
-  const shopInfo = useSelector(state => state.admin.shop)
+  const param = useParams();
+  const modalRef = useRef(null);
+  const shareRef = useRef(null);
+  const shopInfo = useSelector((state) => state.admin.shop);
 
-  const id = param.shopId
+  const id = param.shopId;
 
-  const { image, name, phoneNumber } = shopInfo
+  const { image, name, phoneNumber } = shopInfo;
 
-  const viewShopProfile = id => {
-    modalRef.current.open(id)
-  }
+  const viewShopProfile = (id) => {
+    modalRef.current.open(id);
+  };
 
   const share = () => {
-    navigator.clipboard.writeText("http://localhost:3000/store/" + id)
-  }
+    shareRef.current.open("http://localhost:3000/store/" + id);
+  };
 
-  const copy = () => {
-    navigator.clipboard.writeText(window.location.href)
-  }
+  const copy = (e) => {
+    navigator.clipboard.writeText(window.location.href);
+  };
 
   return (
     <div className="admin-layout_side-bar">
       <Image
-        src={`data:image/jpeg;base64,${image}`}
+        src={
+          image
+            ? `data:image/jpeg;base64,${image}`
+            : "https://dummyimage.com/900x900/ecf0f1/aaa"
+        }
         fluid
         rounded
         onClick={viewShopProfile}
@@ -58,14 +64,21 @@ const RightSideBar = () => {
         color="green"
         style={{ marginTop: 15, width: "100%" }}
       />
-      <Button
-        basic
-        content="Copy Link"
-        labelPosition="left"
-        icon="linkify"
-        onClick={copy}
-        color="brown"
-        style={{ marginTop: 15, width: "100%" }}
+
+      <Popup
+        content="Copied !"
+        onMount={copy}
+        on="click"
+        trigger={
+          <Button
+            basic
+            content="Copy Link"
+            labelPosition="left"
+            icon="linkify"
+            color="brown"
+            style={{ marginTop: 15, width: "100%" }}
+          />
+        }
       />
 
       <Button
@@ -78,13 +91,10 @@ const RightSideBar = () => {
         style={{ marginTop: 15, width: "100%" }}
       />
 
-      <ModifyStoreModal
-        shopId={id}
-        shopInfo={shopInfo}
-        ref={modalRef}
-      ></ModifyStoreModal>
+      <ModifyStoreModal shopId={id} shopInfo={shopInfo} ref={modalRef} />
+      <ShareModal ref={shareRef} />
     </div>
-  )
-}
+  );
+};
 
-export default RightSideBar
+export default RightSideBar;

@@ -1,23 +1,22 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Redirect } from "react-router"
-import AdminLayoutRoute from "./../layouts/AdminLayout"
-import CustomerLayoutRoute from "./../layouts/CustomerLayout"
-import NotFound from "./../pages/404"
-import ViewOrders from "../pages/ViewOrders"
-import ViewMenu from "./../pages/ViewMenu"
-import Stores from "../pages/Stores"
-import Store from "../pages/Store"
-import DefaultLayoutRoute from "./../layouts/DefaultLayout"
-import SignIn from "../pages/SignIn"
-import SignUp from "../pages/SignUp"
-import { useSelector } from "react-redux"
-import OrderDetail from "../pages/OrderDetail"
-import Order from "../pages/Order"
+import { Redirect } from "react-router";
+import AdminLayoutRoute from "./../layouts/AdminLayout";
+import CustomerLayoutRoute from "./../layouts/CustomerLayout";
+import NotFound from "./../pages/404";
+import ViewOrders from "../pages/ViewOrders";
+import ViewMenu from "./../pages/ViewMenu";
+import Stores from "../pages/Stores";
+import Store from "../pages/Store";
+import DefaultLayoutRoute from "./../layouts/DefaultLayout";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
+import { useSelector } from "react-redux";
+import OrderDetail from "../pages/OrderDetail";
+import Order from "../pages/Order";
 
 const Router = () => {
-  const auth = useSelector(state => state.auth)
-  console.log(auth.customerId)
+  const auth = useSelector((state) => state.auth);
   return (
     <BrowserRouter>
       <Switch>
@@ -26,6 +25,10 @@ const Router = () => {
           {!auth.customerId && <Redirect to="/sign-in" />}
         </Route>
         <Route path="/cart/:cartId" exact>
+          {auth.customerId && <CustomerLayoutRoute component={Store} />}
+          {!auth.customerId && <DefaultLayoutRoute component={SignIn} />}
+        </Route>
+        <Route path="/store/:shopId" exact>
           {auth.customerId && <CustomerLayoutRoute component={Store} />}
           {!auth.customerId && <DefaultLayoutRoute component={SignIn} />}
         </Route>
@@ -55,7 +58,7 @@ const Router = () => {
         </Route>
       </Switch>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default Router
+export default Router;

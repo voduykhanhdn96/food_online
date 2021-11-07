@@ -1,61 +1,54 @@
-import { forwardRef, useImperativeHandle, useMemo, useState } from "react"
-import { Button, Grid, Modal, Dropdown } from "semantic-ui-react"
-import dayjs from "dayjs"
-import { AgGridReact } from "ag-grid-react/lib/agGridReact"
-import OrderInforField from "./../../components/OrderInforField"
-import { useDispatch, useSelector } from "react-redux"
+import { forwardRef, useImperativeHandle, useMemo, useState } from "react";
+import { Button, Grid, Modal, Dropdown } from "semantic-ui-react";
+import dayjs from "dayjs";
+import { AgGridReact } from "ag-grid-react/lib/agGridReact";
+import OrderInforField from "./../../components/OrderInforField";
+import { useDispatch, useSelector } from "react-redux";
 import {
   changeStatusOrder,
   cancelOrder,
-} from "../../store/actions/admin-action"
-import useToast from "../../hooks/useToast"
-import { useHistory } from "react-router-dom"
-import { useEffect } from "react"
+} from "../../store/actions/admin-action";
+import useToast from "../../hooks/useToast";
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 const options = [
   { key: 1, text: "Confirmed", value: "Confirmed" },
   { key: 2, text: "Sent To Kitchen", value: "Sent To Kitchen" },
   { key: 3, text: "Ready for Pickup", value: "Ready for Pickup" },
-]
+];
 
 const OrderDetailModal = forwardRef((props, ref) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isChangeStatus, setIsChangeStatus] = useState(false)
-  const [order, setOrder] = useState([])
-  const notification = useSelector(state => state.notification)
-  const { toastError } = useToast()
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const [isOpen, setIsOpen] = useState(false);
+  const [isChangeStatus, setIsChangeStatus] = useState(false);
+  const [order, setOrder] = useState([]);
+  const notification = useSelector((state) => state.notification);
+  const { toastError } = useToast();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isChangeStatus) {
-      console.log(notification)
       if (notification.status === "completed" && !notification.error) {
-        history.go(0)
+        history.go(0);
       }
       if (notification.status === "completed" && notification.error) {
-        toastError(notification.error)
-        setIsChangeStatus(false)
+        toastError(notification.error);
+        setIsChangeStatus(false);
       }
     }
-  }, [
-    history,
-    isChangeStatus,
-    notification.error,
-    notification,
-    toastError,
-  ])
+  }, [history, isChangeStatus, notification.error, notification, toastError]);
 
   useImperativeHandle(ref, () => ({
     open(id) {
-      setIsOpen(true)
+      setIsOpen(true);
       const orderTemp = props.listOrder
-        .filter(item => item.orderId === id)
-        .map(filteredItem => {
-          return filteredItem
-        })
-      setOrder(orderTemp[0])
+        .filter((item) => item.orderId === id)
+        .map((filteredItem) => {
+          return filteredItem;
+        });
+      setOrder(orderTemp[0]);
     },
-  }))
+  }));
 
   const columnDefs = useMemo(
     () => [
@@ -65,7 +58,7 @@ const OrderDetailModal = forwardRef((props, ref) => {
       { field: "price" },
     ],
     []
-  )
+  );
 
   const defaultColDef = useMemo(
     () => ({
@@ -73,7 +66,7 @@ const OrderDetailModal = forwardRef((props, ref) => {
       sortable: true,
     }),
     []
-  )
+  );
 
   const {
     orderId,
@@ -84,22 +77,22 @@ const OrderDetailModal = forwardRef((props, ref) => {
     itemsInCart,
     orderTime,
     shopId,
-  } = order
+  } = order;
 
   const changeStatus = (e, data) => {
-    dispatch(changeStatusOrder(orderId, data.value, customerId, shopId))
-    setIsChangeStatus(true)
-  }
+    setIsChangeStatus(true);
+    dispatch(changeStatusOrder(orderId, data.value, customerId, shopId));
+  };
 
   const deliverOrder = () => {
-    dispatch(changeStatusOrder(orderId, "Delivered", customerId, shopId))
-    setIsChangeStatus(true)
-  }
+    setIsChangeStatus(true);
+    dispatch(changeStatusOrder(orderId, "Delivered", customerId, shopId));
+  };
 
   const cancelledOrder = () => {
-    dispatch(cancelOrder(orderId, customerId))
-    setIsChangeStatus(true)
-  }
+    setIsChangeStatus(true);
+    dispatch(cancelOrder(orderId, customerId));
+  };
 
   return (
     <Modal
@@ -190,7 +183,7 @@ const OrderDetailModal = forwardRef((props, ref) => {
         />
       </Modal.Actions>
     </Modal>
-  )
-})
+  );
+});
 
-export default OrderDetailModal
+export default OrderDetailModal;

@@ -10,18 +10,18 @@ export async function changeStatus(orderId, orderStatus, customerId, shopId) {
       customerId: customerId,
       shopId: shopId,
     }),
-  })
+  });
 
-  const data = await response.json()
+  const data = await response.json();
 
   if (data.errorMessage) {
-    throw new Error(data.errorMessage)
+    throw new Error(data.errorMessage);
   }
   if (!response.ok) {
-    throw new Error(data.message || "Order is fail")
+    throw new Error(data.errorMessage || "Order is fail");
   }
 
-  return data
+  return data;
 }
 
 export async function cancel(orderId, customerId) {
@@ -32,18 +32,18 @@ export async function cancel(orderId, customerId) {
       orderId: orderId,
       customerId: customerId,
     }),
-  })
+  });
 
-  const data = await response.json()
+  const data = await response.json();
 
   if (data.errorMessage) {
-    throw new Error(data.errorMessage)
+    throw new Error(data.errorMessage);
   }
   if (!response.ok) {
-    throw new Error(data.message || "Order is fail")
+    throw new Error(data.message || "Order is fail");
   }
 
-  return data
+  return data;
 }
 
 export async function createOrder(cartId, infomation) {
@@ -54,11 +54,11 @@ export async function createOrder(cartId, infomation) {
       cartId: cartId,
       deliveryInformation: infomation,
     }),
-  })
+  });
 
-  const data = await response.json()
+  const data = await response.json();
 
-  return data
+  return data;
 }
 
 export async function getAllOrder(customerId) {
@@ -68,15 +68,15 @@ export async function getAllOrder(customerId) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }
-  )
+  );
 
-  const data = await response.json()
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Order is fail")
+    throw new Error(data.message || "Order is fail");
   }
 
-  return data
+  return data;
 }
 
 export async function getAllOrderWithStore(shopId) {
@@ -86,30 +86,30 @@ export async function getAllOrderWithStore(shopId) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     }
-  )
+  );
 
-  const data = await response.json()
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Order is fail")
+    throw new Error(data.message || "Order is fail");
   }
 
-  return data
+  return data;
 }
 
 export async function getOrder(orderId) {
   const response = await fetch(`${API_URL}/Order/` + orderId, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
-  })
+  });
 
-  const data = await response.json()
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Order is fail")
+    throw new Error(data.message || "Order is fail");
   }
 
-  return data
+  return data;
 }
 // getOrderData = () => {
 //   fetch("https://localhost:5001/api/Order/" + this.state.cartId, {
