@@ -14,26 +14,35 @@ const HeaderGuest = () => {
     history.push("/")
   }
   return (
-    <Menu className="header" pointing secondary widths={5}>
-      <Menu.Item></Menu.Item>
+    <Menu className="header" secondary>
+      <Menu.Item onClick={() => history.push("/store")}>
+        <Image src="/logo32.png" />
+      </Menu.Item>
+
+      <Menu.Item
+        name="Stores"
+        active={activeItem === "Stores"}
+        onClick={() => history.push("/store")}
+      >
+        Stores
+      </Menu.Item>
+
       <Menu.Item
         name="Profile"
         active={activeItem === "Profile"}
         onClick={() => history.push("/order")}
       >
-        <Icon size={"small"} name="shopping cart" /> List Order
+        Your Orders
       </Menu.Item>
-      <Menu.Item onClick={() => history.push("/store")}>
-        <Image src="/logo/logo32.png" />
-      </Menu.Item>
+
       <Menu.Item
         name="logoff"
+        position="right"
         active={activeItem === "logoff"}
         onClick={logout}
       >
         <Icon size={"small"} name="log out" /> Sign Out
       </Menu.Item>
-      <Menu.Item></Menu.Item>
     </Menu>
   )
 }

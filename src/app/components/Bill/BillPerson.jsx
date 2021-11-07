@@ -29,7 +29,7 @@ const BillPerson = ({ orderPerson }) => {
         ))}
       </Menu>
 
-      <Segment attached="bottom">
+      <Segment raised attached="bottom">
         <Table color="brown" key="brown" inverted>
           <Table.Header>
             <Table.Row>

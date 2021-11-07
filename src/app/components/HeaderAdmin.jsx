@@ -13,7 +13,7 @@ const HeaderAdmin = () => {
       <Menu.Item
         onClick={() => history.push("/admin/" + param.shopId + "/view-menu")}
       >
-        <Image src="/logo/logo32.png" />
+        <Image src="/logo32.png" />
       </Menu.Item>
 
       {/* <Menu.Item

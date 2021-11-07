@@ -3,6 +3,7 @@ import StoreList from "../components/StoreList"
 import { useDispatch } from "react-redux"
 import { fetchAllShop } from "../store/actions/shop-action"
 import { useEffect } from "react"
+import { Segment } from "semantic-ui-react"
 
 const DashboardGuest = () => {
   const [storeList, setStoreList] = useState([])
@@ -18,12 +19,9 @@ const DashboardGuest = () => {
   }, [loadShop])
 
   return (
-    <>
-      <div className="store-search"></div>
-      <div className="store-list">
-        {storeList && <StoreList stores={storeList}></StoreList>}
-      </div>
-    </>
+    <Segment raised className="store-list">
+      {storeList && <StoreList stores={storeList}></StoreList>}
+    </Segment>
   )
 }
 

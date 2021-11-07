@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom"
-import { Card, Icon, Image } from "semantic-ui-react"
+import { Card, Header, Icon, Image } from "semantic-ui-react"
 
 const StoreCard = ({ store }) => {
   const { image, name, shopId, phoneNumber } = store
   const link = `/store/${shopId}`
 
+  const imageSrc = image
+    ? `data:image/jpeg;base64,${image}`
+    : `https://dummyimage.com/500x500/ecf0f1/aaa`
+
   return (
-    <Card>
-      <Image src={`data:image/jpeg;base64,${image}`} wrapped ui={false} />
+    <Card color="red" raised>
+      <Image rounded src={imageSrc} wrapped ui={false} />
       <Card.Content>
         <Card.Header>
-          <Link to={link}>{name}</Link>
+          <Link to={link}>
+            <Header as="h6" color="red">
+              {name}
+            </Header>
+          </Link>
         </Card.Header>
       </Card.Content>
       <Card.Content extra>

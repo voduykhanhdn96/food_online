@@ -3,7 +3,7 @@ import MenuItem from "./MenuItem"
 
 const MenuItemList = ({ items, viewDetail, addToCart }) => {
   return (
-    <List size={"large"}>
+    <List verticalAlign="top" animated>
       {items.map(item => (
         <MenuItem
           key={item.itemId}

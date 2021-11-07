@@ -100,12 +100,17 @@ const Login = () => {
 
   return (
     <Container className="auth-form">
-      <Image src="/logo/logo64.png" centered />
+      <Image src="/logo64.png" centered />
       <Grid columns="equal">
         <Grid.Column></Grid.Column>
         <Grid.Column width={6}>
           <Segment raised>
-            <Label as="a" style={{ width: "100%" }} onClick={toggleView}>
+            <Label
+              color="red"
+              as="a"
+              style={{ width: "100%" }}
+              onClick={toggleView}
+            >
               <Icon name="question circle" /> {label}
             </Label>
             <Divider />
@@ -119,7 +124,7 @@ const Login = () => {
                 <label>Phone Number</label>
                 <input ref={refPhoneNumber} placeholder="Phone Number" />
               </Form.Field>
-              <Button type="submit" color="green" fluid onClick={submit}>
+              <Button type="submit" color="red" fluid onClick={submit}>
                 Register
               </Button>
             </Form>
@@ -129,7 +134,7 @@ const Login = () => {
               as="a"
               basic
               style={{ width: "100%" }}
-              color="grey"
+              color="red"
               onClick={signIn}
             >
               <Icon name="user" /> Already a member. Sign In

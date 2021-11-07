@@ -4,6 +4,10 @@
     url(./fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf) format("truetype");
 }
 
+body {
+  background: #ecf0f1 !important;
+}
+
 .fl-right {
   float: right;
 }
