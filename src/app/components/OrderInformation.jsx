@@ -1,5 +1,5 @@
 import { Label } from "semantic-ui-react"
-const OrderInforField = ({ title, label, link }) => {
+const OrderInformation = ({ title, label, link }) => {
   return (
     <div className="info-field">
       <h5>{title}</h5>
@@ -8,4 +8,4 @@ const OrderInforField = ({ title, label, link }) => {
   )
 }
 
-export default OrderInforField
+export default OrderInformation

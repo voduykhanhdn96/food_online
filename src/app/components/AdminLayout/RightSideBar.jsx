@@ -2,7 +2,7 @@ import { useRef } from "react"
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { Button, Image, Popup, Segment } from "semantic-ui-react"
-import StoreInforField from "../../components/StoreInforField"
+import StoreInformation from "../StoreInformation"
 import ModifyStoreModal from "./RightSideBar/ModifyStoreModal"
 import ShareModal from "./RightSideBar/ShareModal"
 
@@ -42,12 +42,16 @@ const RightSideBar = () => {
         target="_blank"
       />
 
-      <StoreInforField icon="home" title="Name" label={name}></StoreInforField>
-      <StoreInforField
+      <StoreInformation
+        icon="home"
+        title="Name"
+        label={name}
+      ></StoreInformation>
+      <StoreInformation
         icon="phone"
         title="Phone Number"
         label={phoneNumber}
-      ></StoreInforField>
+      ></StoreInformation>
 
       <Button
         basic

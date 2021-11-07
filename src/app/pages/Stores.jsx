@@ -5,7 +5,7 @@ import { fetchAllShop } from "../store/actions/shop-action"
 import { useEffect } from "react"
 import { Segment } from "semantic-ui-react"
 
-const DashboardGuest = () => {
+const Stores = () => {
   const [storeList, setStoreList] = useState([])
   const dispatch = useDispatch()
 
@@ -25,4 +25,4 @@ const DashboardGuest = () => {
   )
 }
 
-export default DashboardGuest
+export default Stores

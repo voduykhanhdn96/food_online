@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle, useMemo, useState } from "react"
 import { Button, Grid, Modal, Dropdown } from "semantic-ui-react"
 import dayjs from "dayjs"
 import { AgGridReact } from "ag-grid-react/lib/agGridReact"
-import OrderInforField from "./../../components/OrderInforField"
+import OrderInformation from "./../../components/OrderInformation"
 import { useDispatch, useSelector } from "react-redux"
 import {
   changeStatusOrder,
@@ -106,28 +106,28 @@ const OrderDetailModal = forwardRef((props, ref) => {
           <div className="order-info">
             <Grid container>
               <Grid.Column width={2}>
-                <OrderInforField
+                <OrderInformation
                   title="Order No"
                   label={orderId}
-                ></OrderInforField>
+                ></OrderInformation>
               </Grid.Column>
               <Grid.Column width={3}>
-                <OrderInforField
+                <OrderInformation
                   title="Order Time"
                   label={dayjs(orderTime).format("MM/DD/YYYY HH:mm")}
-                ></OrderInforField>
+                ></OrderInformation>
               </Grid.Column>
               <Grid.Column width={2}>
-                <OrderInforField
+                <OrderInformation
                   title="Customer Name"
                   label={customerName}
-                ></OrderInforField>
+                ></OrderInformation>
               </Grid.Column>
               <Grid.Column width={2}>
-                <OrderInforField
+                <OrderInformation
                   title="Customer Phone"
                   label={customerPhoneNumber}
-                ></OrderInforField>
+                ></OrderInformation>
               </Grid.Column>
               <Grid.Column width={3}>
                 <div className="info-field">

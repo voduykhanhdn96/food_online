@@ -1,5 +1,5 @@
 import { useParams } from "react-router"
-import MenuItemList from "./../components/MenuItemList"
+import MenuItemList from "../components/MenuItemList"
 import { Grid, Header, Segment } from "semantic-ui-react"
 import Cart from "../components/Cart"
 import { useEffect } from "react"
@@ -17,7 +17,7 @@ import { LogLevel, HubConnectionBuilder } from "@microsoft/signalr"
 import { useCallback } from "react"
 import { useHistory } from "react-router"
 
-const Store = () => {
+const StoreDetail = () => {
   const param = useParams()
   const [isClick, setIsClick] = useState(false)
   const [isInit, setIsInit] = useState(true)
@@ -141,4 +141,4 @@ const Store = () => {
   )
 }
 
-export default Store
+export default StoreDetail
