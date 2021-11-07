@@ -29,6 +29,9 @@ const OrderDetail = () => {
     connection.on("ChangeOrderStatus", (message) => {
       dispatch(takeOrder(orderId));
     });
+    connection.on("CancelOrder", (message) => {
+      dispatch(takeOrder(orderId));
+    });
   }, [dispatch, orderId]);
 
   const [stepOrder, setStepOrder] = useState(0);
@@ -54,15 +57,12 @@ const OrderDetail = () => {
           setStepOrder(-1);
           break;
         case "Confirmed":
-          setStepOrder(0);
-          break;
-        case "Sent To Kitchen":
           setStepOrder(1);
           break;
-        case "Ready for Pickup":
+        case "Sent To Kitchen":
           setStepOrder(2);
           break;
-        case "Ready for Delivery":
+        case "Ready for Pickup":
           setStepOrder(3);
           break;
         case "Delivered":

@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getListOrder, getShopDetail } from "../store/actions/admin-action";
 import { useParams } from "react-router-dom";
-// import { formatCurrency } from "./../helpers/number-helper"
+import { LogLevel, HubConnectionBuilder } from "@microsoft/signalr";
+import { useCallback } from "react";
 
 const ViewOrders = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,29 @@ const ViewOrders = () => {
     }),
     []
   );
+
+  const startCons = useCallback(async () => {
+    const connection = new HubConnectionBuilder()
+      .withUrl("http://localhost:8080/hubs/shop?shop=" + param.shopId, {
+        withCredentials: false,
+      })
+      .configureLogging(LogLevel.Information)
+      .build();
+
+    try {
+      await connection.start();
+    } catch (e) {
+      console.log(e);
+    }
+
+    connection.on("NewOrder", (message) => {
+      dispatch(getListOrder(param.shopId));
+    });
+  }, [dispatch, param.shopId]);
+
+  useEffect(() => {
+    startCons();
+  }, [startCons]);
 
   useEffect(() => {
     dispatch(getShopDetail(param.shopId));

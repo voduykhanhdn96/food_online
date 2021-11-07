@@ -1,11 +1,11 @@
-import { formatCurrency } from "../helpers/number-helper"
-import { useHistory } from "react-router-dom"
-import { Table } from "semantic-ui-react"
-import moment from "moment"
-import StatusCellRenderer from "../pages/ViewOrders/StatusCellRenderer"
+import { formatCurrency } from "../helpers/number-helper";
+import { useHistory } from "react-router-dom";
+import { Table, Button } from "semantic-ui-react";
+import moment from "moment";
+import StatusCellRenderer from "../pages/ViewOrders/StatusCellRenderer";
 
 const OrderItem = ({ order }) => {
-  const history = useHistory()
+  const history = useHistory();
   return (
     <Table.Body>
       <Table.Row>
@@ -20,17 +20,17 @@ const OrderItem = ({ order }) => {
           <StatusCellRenderer value={order.status} />
         </Table.Cell>
         <Table.Cell>
-          {" "}
-          <div
-            className="ui button"
+          <Button
+            variant="contained"
             onClick={() => history.push("/order/" + order.orderId)}
           >
-            View Order
-          </div>
+            {" "}
+            View Order{" "}
+          </Button>
         </Table.Cell>
       </Table.Row>
     </Table.Body>
-  )
-}
+  );
+};
 
-export default OrderItem
+export default OrderItem;
