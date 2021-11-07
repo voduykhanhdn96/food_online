@@ -4,13 +4,13 @@ const StoreInforField = ({ title, label, link, icon }) => {
     <div className="info-field">
       <h5>{title}</h5>
       {link && (
-        <Label size={"large"} as="a" href={link}>
+        <Label color="red" size={"large"} as="a" href={link}>
           <Icon name={icon} />
           {label}
         </Label>
       )}
       {!link && (
-        <Label size={"large"}>
+        <Label color="red" size={"large"}>
           <Icon name={icon} />
           {label}
         </Label>

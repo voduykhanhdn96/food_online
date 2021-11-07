@@ -58,6 +58,7 @@ const CheckOutModal = forwardRef((props, ref) => {
 
       <Modal.Actions>
         <Button
+          size={"tiny"}
           content="Continue Shopping"
           labelPosition="right"
           icon="shop"

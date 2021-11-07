@@ -14,6 +14,7 @@ const LeftSideBar = () => {
       ></StoreInforField>
 
       <Button
+        size={"tiny"}
         basic
         content="Share"
         labelPosition="left"

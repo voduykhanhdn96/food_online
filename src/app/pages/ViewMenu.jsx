@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getShopDetail } from "../store/actions/admin-action"
 import { useParams } from "react-router-dom"
+import { Segment } from "semantic-ui-react"
 
 const ViewMenu = () => {
   const param = useParams()
@@ -32,13 +33,14 @@ const ViewMenu = () => {
         title="View Menu"
         addItem={() => addItem()}
       ></SectionHeader>
-      {/* {notification.status === "pending" && <Loader />} */}
-      {shopDetail.items && (
-        <MenuItemList
-          items={shopDetail.items}
-          viewDetail={viewDetail}
-        ></MenuItemList>
-      )}
+      <Segment raised color="red" loading={notification.status === "pending"}>
+        {shopDetail.items && (
+          <MenuItemList
+            items={shopDetail.items}
+            viewDetail={viewDetail}
+          ></MenuItemList>
+        )}
+      </Segment>
 
       <MenuDetailModal
         items={shopDetail.items}

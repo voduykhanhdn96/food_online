@@ -14,7 +14,7 @@ const HeaderGuest = () => {
     history.push("/")
   }
   return (
-    <Menu className="header" secondary>
+    <Menu className="header" secondary size="small">
       <Menu.Item onClick={() => history.push("/store")}>
         <Image src="/logo32.png" />
       </Menu.Item>

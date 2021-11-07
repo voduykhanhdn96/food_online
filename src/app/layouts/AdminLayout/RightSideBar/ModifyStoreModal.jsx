@@ -1,82 +1,82 @@
-import { Modal, Button, Image, Form, Icon, Label } from "semantic-ui-react";
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { Modal, Button, Image, Form, Icon, Label } from "semantic-ui-react"
+import { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import {
   updateInfomationShop,
   getShopDetail,
-} from "../../../store/actions/admin-action";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import useToast from "../../../hooks/useToast";
+} from "../../../store/actions/admin-action"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import useToast from "../../../hooks/useToast"
 
 const ModifyStoreModal = forwardRef((props, ref) => {
-  const dispatch = useDispatch();
-  const inputFileRef = useRef(null);
-  const { toastSuccess, toastError, toastInfo } = useToast();
-  const notification = useSelector((state) => state.notification);
+  const dispatch = useDispatch()
+  const inputFileRef = useRef(null)
+  const { toastSuccess, toastError, toastInfo } = useToast()
+  const notification = useSelector(state => state.notification)
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClickUpd, setIsClickUpd] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [newName, setNewName] = useState(null);
-  const [imageLoad, setImageLoad] = useState(null);
-  const [newPhoneNumber, setNewPhoneNumber] = useState(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const [isClickUpd, setIsClickUpd] = useState(false)
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [newName, setNewName] = useState(null)
+  const [imageLoad, setImageLoad] = useState(null)
+  const [newPhoneNumber, setNewPhoneNumber] = useState(null)
 
-  const id = props.shopId;
-  const { image, name, phoneNumber } = props.shopInfo;
+  const id = props.shopId
+  const { image, name, phoneNumber } = props.shopInfo
 
   useImperativeHandle(ref, () => ({
     open() {
-      setIsOpen(true);
+      setIsOpen(true)
 
-      setNewName(name);
-      setNewPhoneNumber(phoneNumber);
+      setNewName(name)
+      setNewPhoneNumber(phoneNumber)
 
       if (image) {
-        const url = `data:image/png;base64,${image}`;
+        const url = `data:image/png;base64,${image}`
 
         fetch(url)
-          .then((res) => res.blob())
-          .then((response) => {
-            setImageLoad(URL.createObjectURL(response));
-          });
+          .then(res => res.blob())
+          .then(response => {
+            setImageLoad(URL.createObjectURL(response))
+          })
       }
     },
-  }));
+  }))
 
-  const chooseFile = (e) => {
+  const chooseFile = e => {
     if (e.target.files[0]) {
-      setSelectedFile(e.target.files[0]);
-      setImageLoad(URL.createObjectURL(e.target.files[0]));
+      setSelectedFile(e.target.files[0])
+      setImageLoad(URL.createObjectURL(e.target.files[0]))
     }
-  };
+  }
   const requestChooseFile = () => {
-    inputFileRef.current.click();
-  };
+    inputFileRef.current.click()
+  }
 
   const editProfile = () => {
-    var formData = new FormData();
-    formData.append("Name", newName);
-    formData.append("PhoneNumber", phoneNumber);
+    var formData = new FormData()
+    formData.append("Name", newName)
+    formData.append("PhoneNumber", phoneNumber)
     if (phoneNumber !== newPhoneNumber) {
-      formData.append("NewPhoneNumber", newPhoneNumber);
+      formData.append("NewPhoneNumber", newPhoneNumber)
     }
-    formData.append("Logo", selectedFile);
+    formData.append("Logo", selectedFile)
 
-    dispatch(updateInfomationShop(formData));
-    setIsClickUpd(true);
-  };
+    dispatch(updateInfomationShop(formData))
+    setIsClickUpd(true)
+  }
 
   useEffect(() => {
     if (isClickUpd) {
       if (notification.status === "completed" && !notification.error) {
-        toastSuccess("Update is success !");
-        dispatch(getShopDetail(id));
-        setIsOpen(false);
-        setIsClickUpd(false);
+        toastSuccess("Update is success !")
+        dispatch(getShopDetail(id))
+        setIsOpen(false)
+        setIsClickUpd(false)
       }
       if (notification.status === "completed" && notification.error) {
-        toastError("Update is wrong !");
-        setIsClickUpd(false);
+        toastError("Update is wrong !")
+        setIsClickUpd(false)
       }
     }
   }, [
@@ -87,7 +87,7 @@ const ModifyStoreModal = forwardRef((props, ref) => {
     toastSuccess,
     toastError,
     toastInfo,
-  ]);
+  ])
 
   return (
     <Modal
@@ -111,8 +111,8 @@ const ModifyStoreModal = forwardRef((props, ref) => {
               <input
                 placeholder="Name"
                 value={newName}
-                onChange={(e) => {
-                  setNewName(e.target.value);
+                onChange={e => {
+                  setNewName(e.target.value)
                 }}
               />
             </Form.Field>
@@ -121,13 +121,14 @@ const ModifyStoreModal = forwardRef((props, ref) => {
               <input
                 placeholder="Phone"
                 value={newPhoneNumber}
-                onChange={(e) => {
-                  setNewPhoneNumber(e.target.value);
+                onChange={e => {
+                  setNewPhoneNumber(e.target.value)
                 }}
               />
             </Form.Field>
             <Form.Field>
               <Button
+                size={"tiny"}
                 as="div"
                 labelPosition="right"
                 onClick={requestChooseFile}
@@ -164,7 +165,7 @@ const ModifyStoreModal = forwardRef((props, ref) => {
         />
       </Modal.Actions>
     </Modal>
-  );
-});
+  )
+})
 
-export default ModifyStoreModal;
+export default ModifyStoreModal

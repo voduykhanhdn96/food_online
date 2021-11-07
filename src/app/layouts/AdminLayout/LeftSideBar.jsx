@@ -6,14 +6,14 @@ const LeftSideBar = () => {
 
   return (
     <div className="admin-layout_menu">
-      <Menu vertical>
-        <Menu.Item name="orders">
+      <Menu vertical color="red">
+        <Menu.Item name="orders" color="red">
           <Link to={`/admin/${param.shopId}/view-orders`}>
             <Icon name="list" /> Orders
           </Link>
         </Menu.Item>
 
-        <Menu.Item name="menu">
+        <Menu.Item name="menu" color="red">
           <Link to={`/admin/${param.shopId}/view-menu`}>
             <Icon name="list alternate outline" /> Menu
           </Link>

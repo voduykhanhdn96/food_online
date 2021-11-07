@@ -124,7 +124,13 @@ const Login = () => {
                 <label>Phone Number</label>
                 <input ref={refPhoneNumber} placeholder="Phone Number" />
               </Form.Field>
-              <Button type="submit" color="red" fluid onClick={submit}>
+              <Button
+                size={"tiny"}
+                type="submit"
+                color="red"
+                fluid
+                onClick={submit}
+              >
                 Register
               </Button>
             </Form>

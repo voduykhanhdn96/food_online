@@ -1,35 +1,35 @@
-import { useRef } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Button, Image, Popup } from "semantic-ui-react";
-import StoreInforField from "../../components/StoreInforField";
-import ModifyStoreModal from "./RightSideBar/ModifyStoreModal";
-import ShareModal from "./RightSideBar/ShareModal";
+import { useRef } from "react"
+import { useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { Button, Image, Popup, Segment } from "semantic-ui-react"
+import StoreInforField from "../../components/StoreInforField"
+import ModifyStoreModal from "./RightSideBar/ModifyStoreModal"
+import ShareModal from "./RightSideBar/ShareModal"
 
 const RightSideBar = () => {
-  const param = useParams();
-  const modalRef = useRef(null);
-  const shareRef = useRef(null);
-  const shopInfo = useSelector((state) => state.admin.shop);
+  const param = useParams()
+  const modalRef = useRef(null)
+  const shareRef = useRef(null)
+  const shopInfo = useSelector(state => state.admin.shop)
 
-  const id = param.shopId;
+  const id = param.shopId
 
-  const { image, name, phoneNumber } = shopInfo;
+  const { image, name, phoneNumber } = shopInfo
 
-  const viewShopProfile = (id) => {
-    modalRef.current.open(id);
-  };
+  const viewShopProfile = id => {
+    modalRef.current.open(id)
+  }
 
   const share = () => {
-    shareRef.current.open("http://localhost:3000/store/" + id);
-  };
+    shareRef.current.open("http://localhost:3000/store/" + id)
+  }
 
-  const copy = (e) => {
-    navigator.clipboard.writeText(window.location.href);
-  };
+  const copy = e => {
+    navigator.clipboard.writeText(window.location.href)
+  }
 
   return (
-    <div className="admin-layout_side-bar">
+    <Segment color="red" as="div" className="admin-layout_side-bar">
       <Image
         src={
           image
@@ -42,12 +42,6 @@ const RightSideBar = () => {
         target="_blank"
       />
 
-      <StoreInforField
-        icon="linkify"
-        title="Link"
-        label={`/admin/` + id + `/view-menu`}
-      ></StoreInforField>
-      <StoreInforField icon="hashtag" title="ID" label={id}></StoreInforField>
       <StoreInforField icon="home" title="Name" label={name}></StoreInforField>
       <StoreInforField
         icon="phone"
@@ -57,6 +51,7 @@ const RightSideBar = () => {
 
       <Button
         basic
+        size={"tiny"}
         content="Share"
         labelPosition="left"
         icon="share alternate"
@@ -72,6 +67,7 @@ const RightSideBar = () => {
         trigger={
           <Button
             basic
+            size={"tiny"}
             content="Copy Link"
             labelPosition="left"
             icon="linkify"
@@ -83,6 +79,7 @@ const RightSideBar = () => {
 
       <Button
         basic
+        size={"tiny"}
         content="Edit Profile"
         labelPosition="left"
         icon="briefcase"
@@ -93,8 +90,8 @@ const RightSideBar = () => {
 
       <ModifyStoreModal shopId={id} shopInfo={shopInfo} ref={modalRef} />
       <ShareModal ref={shareRef} />
-    </div>
-  );
-};
+    </Segment>
+  )
+}
 
-export default RightSideBar;
+export default RightSideBar

@@ -21,6 +21,7 @@ const OrderItem = ({ order }) => {
         </Table.Cell>
         <Table.Cell>
           <Button
+            size={"tiny"}
             variant="contained"
             onClick={() => history.push("/order/" + order.orderId)}
           >
