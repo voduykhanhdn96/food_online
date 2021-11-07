@@ -2,7 +2,7 @@ import { formatCurrency } from "../helpers/number-helper"
 import { useHistory } from "react-router-dom"
 import { Table, Button } from "semantic-ui-react"
 import moment from "moment"
-import StatusCellRenderer from "../pages/ViewOrders/StatusCellRenderer"
+import StatusCellRenderer from "./ViewOrders/StatusCellRenderer"
 
 const OrderItem = ({ order }) => {
   const history = useHistory()
@@ -25,8 +25,7 @@ const OrderItem = ({ order }) => {
             variant="contained"
             onClick={() => history.push("/order/" + order.orderId)}
           >
-            {" "}
-            View Order{" "}
+            View Order
           </Button>
         </Table.Cell>
       </Table.Row>

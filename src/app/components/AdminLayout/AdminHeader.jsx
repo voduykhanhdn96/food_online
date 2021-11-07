@@ -3,7 +3,7 @@ import { useHistory } from "react-router"
 import { useParams } from "react-router-dom"
 import { Icon, Image, Menu } from "semantic-ui-react"
 
-const HeaderAdmin = () => {
+const AdminHeader = () => {
   const param = useParams()
   const history = useHistory()
   const [activeItem] = useState(null)
@@ -28,4 +28,4 @@ const HeaderAdmin = () => {
   )
 }
 
-export default HeaderAdmin
+export default AdminHeader

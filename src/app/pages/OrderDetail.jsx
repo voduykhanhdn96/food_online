@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { takeOrder } from "../../store/actions/shop-action"
+import { takeOrder } from "../store/actions/shop-action"
 import { Divider } from "semantic-ui-react"
-import Receipt from "../../components/Receipt"
-import { generateId } from "../../helpers/crypto-helper"
+import Receipt from "../components/Receipt"
+import { generateId } from "../helpers/crypto-helper"
 import { LogLevel, HubConnectionBuilder } from "@microsoft/signalr"
-import ProgressStatus from "../../components/ProgressStatus/ProgressStatus"
+import ProgressStatus from "../components/ProgressStatus/ProgressStatus"
 
 const OrderDetail = () => {
   const { orderId } = useParams()

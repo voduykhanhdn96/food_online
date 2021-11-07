@@ -1,8 +1,8 @@
 import { Route } from "react-router-dom"
 import { Container, Grid } from "semantic-ui-react"
-import LeftSideBar from "./AdminLayout/LeftSideBar"
-import RightSideBar from "./AdminLayout/RightSideBar"
-import HeaderAdmin from "./../components/HeaderAdmin"
+import LeftSideBar from "../components/AdminLayout/LeftSideBar"
+import RightSideBar from "../components/AdminLayout/RightSideBar"
+import Header from "../components/AdminLayout/AdminHeader"
 
 const AdminLayout = ({ component: Component, ...rest }) => {
   return (
@@ -10,7 +10,7 @@ const AdminLayout = ({ component: Component, ...rest }) => {
       {...rest}
       render={props => (
         <div className="admin-layout">
-          <HeaderAdmin></HeaderAdmin>
+          <Header></Header>
           <Grid>
             <Grid.Column width={1}></Grid.Column>
             <Grid.Column width={3}>

@@ -12,7 +12,7 @@ import BlankLayout from "./../layouts/BlankLayout"
 import SignIn from "../pages/SignIn"
 import SignUp from "../pages/SignUp"
 import { useSelector } from "react-redux"
-import OrderDetail from "../pages/Orders/OrderDetail"
+import OrderDetail from "../pages/OrderDetail"
 import Orders from "../pages/Orders"
 
 const Router = () => {

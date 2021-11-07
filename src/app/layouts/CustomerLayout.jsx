@@ -1,6 +1,6 @@
 import { Route } from "react-router"
 import { Container, Grid } from "semantic-ui-react"
-import HeaderGuest from "./../components/HeaderGuest"
+import Header from "../components/CustomerLayout/CustomerHeader"
 
 const CustomerLayout = ({ component: Component, ...rest }) => {
   return (
@@ -11,7 +11,7 @@ const CustomerLayout = ({ component: Component, ...rest }) => {
           <Grid>
             <Grid.Column width={2}></Grid.Column>
             <Grid.Column width={12}>
-              <HeaderGuest></HeaderGuest>
+              <Header></Header>
               <Container className="app__content" fluid>
                 <Container fluid className="app__content-wrapper">
                   <Component {...props} />

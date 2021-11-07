@@ -1,4 +1,4 @@
-import MenuDetailModal from "./ViewMenu/MenuDetailModal"
+import MenuDetailModal from "../components/ViewMenu/MenuDetailModal"
 import MenuItemList from "../components/MenuItemList"
 import SectionHeader from "../components/SectionHeader"
 import { useEffect, useRef } from "react"

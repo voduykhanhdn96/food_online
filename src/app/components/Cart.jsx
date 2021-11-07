@@ -1,18 +1,10 @@
-import {
-  Button,
-  Divider,
-  Header,
-  Label,
-  List,
-  Icon,
-  Popup,
-} from "semantic-ui-react"
-import CartItemGroup from "./CartItemGroup"
+import { Button, Divider, Header, Label } from "semantic-ui-react"
 import { formatCurrency } from "./../helpers/number-helper"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import CheckOutModal from "../pages/Checkout/CheckOutModal"
 import { useRef } from "react"
+import CartItemGroup from "./CartItemGroup"
+import CheckOutModal from "./Checkout/CheckOutModal"
 
 const Cart = ({ cart, removeItem, isChange }) => {
   const modalRef = useRef(null)

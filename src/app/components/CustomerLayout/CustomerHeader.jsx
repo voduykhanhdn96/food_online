@@ -2,9 +2,9 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router"
 import { Icon, Image, Menu } from "semantic-ui-react"
-import { logoutAction } from "../store/actions/auth-action"
+import { logoutAction } from "../../store/actions/auth-action"
 
-const HeaderGuest = () => {
+const CustomerHeader = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [activeItem] = useState(null)
@@ -47,4 +47,4 @@ const HeaderGuest = () => {
   )
 }
 
-export default HeaderGuest
+export default CustomerHeader

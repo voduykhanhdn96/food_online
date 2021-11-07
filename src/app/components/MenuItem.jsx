@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { Button, Grid, Icon, Image, List } from "semantic-ui-react"
+import { Button, Icon, Image, List } from "semantic-ui-react"
 import { formatCurrency } from "./../helpers/number-helper"
 import {
   activeThisItem,
