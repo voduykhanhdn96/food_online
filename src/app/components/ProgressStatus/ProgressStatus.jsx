@@ -1,9 +1,9 @@
-import "./ProcessStatus.css";
+import "./ProgressStatus.css"
 
-import { formatCurrency } from "../../helpers/number-helper";
-import { Image } from "semantic-ui-react";
+import { formatCurrency } from "../../helpers/number-helper"
+import { Image } from "semantic-ui-react"
 
-const ProcessStatus = ({ orderInfo, step }) => {
+const ProgressStatus = ({ orderInfo, step }) => {
   return (
     <div className="row shop-tracking-status">
       <div className="col-md-12">
@@ -66,6 +66,6 @@ const ProcessStatus = ({ orderInfo, step }) => {
         </div>
       </div>
     </div>
-  );
-};
-export default ProcessStatus;
+  )
+}
+export default ProgressStatus

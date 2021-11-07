@@ -15,14 +15,14 @@ const HeaderGuest = () => {
   }
   return (
     <Menu className="header" secondary size="small">
-      <Menu.Item onClick={() => history.push("/store")}>
+      <Menu.Item onClick={() => history.push("/stores")}>
         <Image src="/logo32.png" />
       </Menu.Item>
 
       <Menu.Item
         name="Stores"
         active={activeItem === "Stores"}
-        onClick={() => history.push("/store")}
+        onClick={() => history.push("/stores")}
       >
         Stores
       </Menu.Item>

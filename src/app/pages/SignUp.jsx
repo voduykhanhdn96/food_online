@@ -77,7 +77,7 @@ const Login = () => {
         if (isShop) {
           history.push("/admin/" + authUser.shopId + "/view-menu")
         } else {
-          history.push("/store")
+          history.push("/stores")
         }
       }
     }

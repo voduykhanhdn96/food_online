@@ -1,8 +1,8 @@
 import React from "react"
 import { Table, Image } from "semantic-ui-react"
-import { formatCurrency } from "../../helpers/number-helper"
+import { formatCurrency } from "../helpers/number-helper"
 
-const BillPersonDetail = ({ item }) => {
+const ReceiptDetail = ({ item }) => {
   return (
     <Table.Body>
       <Table.Row>
@@ -22,4 +22,4 @@ const BillPersonDetail = ({ item }) => {
     </Table.Body>
   )
 }
-export default BillPersonDetail
+export default ReceiptDetail

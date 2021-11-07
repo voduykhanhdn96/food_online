@@ -58,7 +58,7 @@ const Login = () => {
             history.push(history.location.pathname)
             setIsLoginCart(false)
           } else {
-            history.push("/store")
+            history.push("/stores")
           }
         }
       }
