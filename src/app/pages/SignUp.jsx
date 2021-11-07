@@ -68,7 +68,7 @@ const Login = () => {
   const label = isShop
     ? "Register as a customer?"
     : "Register as a store owner?"
-  const labelName = isShop ? "Shop Number" : "Customer Name"
+  const labelName = isShop ? "Shop Name" : "Customer Name"
 
   return (
     <Container className="auth-form">

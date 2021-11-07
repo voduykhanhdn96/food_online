@@ -1,7 +1,7 @@
-const BACKEND_DOMAIN = "http://localhost:8080/api"
+import { API_URL } from '../../env';
 
 export async function changeStatus(orderId, orderStatus, customerId, shopId) {
-  const response = await fetch(`${BACKEND_DOMAIN}/Order/status`, {
+  const response = await fetch(`${API_URL}/Order/status`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -25,7 +25,7 @@ export async function changeStatus(orderId, orderStatus, customerId, shopId) {
 }
 
 export async function cancel(orderId, customerId) {
-  const response = await fetch(`${BACKEND_DOMAIN}/Order/cancel`, {
+  const response = await fetch(`${API_URL}/Order/cancel`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -47,7 +47,7 @@ export async function cancel(orderId, customerId) {
 }
 
 export async function createOrder(cartId, infomation) {
-  const response = await fetch(`${BACKEND_DOMAIN}/Order`, {
+  const response = await fetch(`${API_URL}/Order`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -63,7 +63,7 @@ export async function createOrder(cartId, infomation) {
 
 export async function getAllOrder(customerId) {
   const response = await fetch(
-    `${BACKEND_DOMAIN}/Order/` + customerId + `/customer/all`,
+    `${API_URL}/Order/` + customerId + `/customer/all`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -81,7 +81,7 @@ export async function getAllOrder(customerId) {
 
 export async function getAllOrderWithStore(shopId) {
   const response = await fetch(
-    `${BACKEND_DOMAIN}/Order/` + shopId + `/shop/all`,
+    `${API_URL}/Order/` + shopId + `/shop/all`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -98,7 +98,7 @@ export async function getAllOrderWithStore(shopId) {
 }
 
 export async function getOrder(orderId) {
-  const response = await fetch(`${BACKEND_DOMAIN}/Order/` + orderId, {
+  const response = await fetch(`${API_URL}/Order/` + orderId, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   })

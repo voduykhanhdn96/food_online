@@ -1,7 +1,7 @@
-const BACKEND_DOMAIN = "http://localhost:8080/api"
+import { API_URL } from '../../env';
 
 export async function createItem(foodData) {
-  const response = await fetch(`${BACKEND_DOMAIN}/Item/create`, {
+  const response = await fetch(`${API_URL}/Item/create`, {
     method: "POST",
     body: foodData,
   })
@@ -16,7 +16,7 @@ export async function createItem(foodData) {
 }
 
 export async function updateItem(itemData) {
-  const response = await fetch(`${BACKEND_DOMAIN}/Item`, {
+  const response = await fetch(`${API_URL}/Item`, {
     method: "PUT",
     body: itemData,
   })
@@ -31,7 +31,7 @@ export async function updateItem(itemData) {
 }
 
 export async function deleteItem(shopId, itemId) {
-  const response = await fetch(`${BACKEND_DOMAIN}/Item/`, {
+  const response = await fetch(`${API_URL}/Item/`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -50,7 +50,7 @@ export async function deleteItem(shopId, itemId) {
 }
 
 export async function activeItem(shopId, itemId) {
-  const response = await fetch(`${BACKEND_DOMAIN}/Item/Active`, {
+  const response = await fetch(`${API_URL}/Item/Active`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
