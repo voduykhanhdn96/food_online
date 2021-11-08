@@ -25,7 +25,7 @@ const Cart = ({ cart, removeItem, isChange }) => {
   }, [dispatch, itemsInCart])
 
   const share = () => {
-    navigator.clipboard.writeText(`${APP_URL}/cart/` + cartId)
+    navigator.clipboard.writeText(`${APP_URL}/cart/${cartId}`)
   }
   return (
     <>

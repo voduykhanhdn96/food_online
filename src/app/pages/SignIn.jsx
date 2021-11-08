@@ -52,7 +52,7 @@ const Login = () => {
       if (notification.status === "completed" && !notification.error) {
         toastSuccess("Login is success !")
         if (isShop) {
-          history.push("/admin/" + authUser.shopId + "/view-menu")
+          history.push(`/admin/${authUser.shopId}/view-menu`)
         } else {
           if (isLoginCart) {
             history.push(history.location.pathname)

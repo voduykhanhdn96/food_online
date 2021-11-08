@@ -22,7 +22,7 @@ const RightSideBar = () => {
   }
 
   const share = () => {
-    shareRef.current.open(`${APP_URL}/store/` + id)
+    shareRef.current.open(`${APP_URL}/store/${id}`)
   }
 
   const copy = e => {

@@ -62,13 +62,10 @@ export async function createOrder(cartId, infomation) {
 }
 
 export async function getAllOrder(customerId) {
-  const response = await fetch(
-    `${API_URL}/Order/` + customerId + `/customer/all`,
-    {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }
-  )
+  const response = await fetch(`${API_URL}/Order/${customerId}/customer/all`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  })
 
   const data = await response.json()
 
@@ -80,7 +77,7 @@ export async function getAllOrder(customerId) {
 }
 
 export async function getAllOrderWithStore(shopId) {
-  const response = await fetch(`${API_URL}/Order/` + shopId + `/shop/all`, {
+  const response = await fetch(`${API_URL}/Order/${shopId}/shop/all`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   })
@@ -95,7 +92,7 @@ export async function getAllOrderWithStore(shopId) {
 }
 
 export async function getOrder(orderId) {
-  const response = await fetch(`${API_URL}/Order/` + orderId, {
+  const response = await fetch(`${API_URL}/Order/${orderId}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   })

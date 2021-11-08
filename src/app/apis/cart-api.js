@@ -1,7 +1,7 @@
 import { API_URL } from "../../env"
 
 export async function getCartData(cartId) {
-  const response = await fetch(`${API_URL}/Cart/` + cartId + `?getShop=true`)
+  const response = await fetch(`${API_URL}/Cart/${cartId}?getShop=true`)
   const data = await response.json()
   if (!response.ok) {
     throw new Error(data.message || "Could not fetch quotes.")

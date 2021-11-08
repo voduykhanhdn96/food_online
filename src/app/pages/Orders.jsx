@@ -23,7 +23,7 @@ const Order = () => {
 
   const viewOrder = useCallback(
     id => {
-      history.push("/order/" + id)
+      history.push(`/order/${id}`)
     },
     [history]
   )

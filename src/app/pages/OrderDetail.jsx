@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { takeOrder } from "../store/actions/shop-action"
-import { Divider, Label, List, Segment } from "semantic-ui-react"
+import { List, Segment } from "semantic-ui-react"
 import Receipt from "../components/Receipt"
 import { generateId } from "../helpers/crypto-helper"
 import { LogLevel, HubConnectionBuilder } from "@microsoft/signalr"
@@ -17,7 +17,7 @@ const OrderDetail = () => {
 
   const startCons = useCallback(async () => {
     const connection = new HubConnectionBuilder()
-      .withUrl(`${SIGNALR_HUB_URL}/order?order=` + orderId, {
+      .withUrl(`${SIGNALR_HUB_URL}/order?order=${orderId}`, {
         withCredentials: false,
       })
       .configureLogging(LogLevel.Information)

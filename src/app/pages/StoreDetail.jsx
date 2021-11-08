@@ -38,7 +38,7 @@ const StoreDetail = () => {
 
   const startCons = useCallback(async () => {
     const connection = new HubConnectionBuilder()
-      .withUrl(`${SIGNALR_HUB_URL}/cart?cart=` + shop.cartId, {
+      .withUrl(`${SIGNALR_HUB_URL}/cart?cart=${shop.cartId}`, {
         withCredentials: false,
       })
       .configureLogging(LogLevel.Information)
@@ -63,7 +63,7 @@ const StoreDetail = () => {
       dispatch(initialCartData(message.cartId))
     })
     connection.on("NewOrder", message => {
-      history.push("/order/" + message.orderId)
+      history.push(`/order/${message.orderId}`)
     })
   }, [dispatch, history, shop.cartId])
 

@@ -7,7 +7,7 @@ const ProgressStatus = ({ step }) => {
       {step > -1 && (
         <div className="order-status">
           <div className="order-status-timeline">
-            <div className={`order-status-timeline-completion c` + step}></div>
+            <div className={`order-status-timeline-completion c${step}`}></div>
           </div>
 
           <div className="image-order-status image-order-status-new active img-circle">

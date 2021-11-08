@@ -48,7 +48,7 @@ const ViewOrders = () => {
 
   const startCons = useCallback(async () => {
     const connection = new HubConnectionBuilder()
-      .withUrl(`${SIGNALR_HUB_URL}/shop?shop=` + param.shopId, {
+      .withUrl(`${SIGNALR_HUB_URL}/shop?shop=${param.shopId}`, {
         withCredentials: false,
       })
       .configureLogging(LogLevel.Information)

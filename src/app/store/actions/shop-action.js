@@ -100,7 +100,7 @@ export const addItemToCart = (customerId, itemId, cartId) => {
     } catch (error) {
       dispatch({
         type: "ERROR",
-        payload: { errorMessage: "" + error.message },
+        payload: { errorMessage: `${error}` },
       })
     }
     // dispatch({ type: "CLEAR_STATUS" })

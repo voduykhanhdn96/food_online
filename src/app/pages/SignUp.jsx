@@ -75,7 +75,7 @@ const Login = () => {
     if (isLogin) {
       if (notification.status === "completed" && !notification.error) {
         if (isShop) {
-          history.push("/admin/" + authUser.shopId + "/view-menu")
+          history.push(`/admin/${authUser.shopId}/view-menu`)
         } else {
           history.push("/stores")
         }

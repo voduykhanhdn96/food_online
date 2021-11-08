@@ -77,7 +77,7 @@ export async function loginShop(phoneNumber) {
 }
 
 export async function getShopById(shopId) {
-  const response = await fetch(`${API_URL}/Shop/` + shopId);
+  const response = await fetch(`${API_URL}/Shop/${shopId}`);
   const data = await response.json();
 
   if (!response.ok) {
