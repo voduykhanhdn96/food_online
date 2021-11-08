@@ -30,7 +30,7 @@ const CustomerHeader = () => {
       <Menu.Item
         name="Profile"
         active={activeItem === "Profile"}
-        onClick={() => history.push("/order")}
+        onClick={() => history.push("/orders")}
       >
         Your Orders
       </Menu.Item>
