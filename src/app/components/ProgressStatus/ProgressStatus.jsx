@@ -2,7 +2,6 @@ import "./ProgressStatus.css"
 import { Container, Image } from "semantic-ui-react"
 
 const ProgressStatus = ({ step }) => {
-  step = -1
   return (
     <Container as="div" fluid className="row shop-tracking-status">
       {step > -1 && (
