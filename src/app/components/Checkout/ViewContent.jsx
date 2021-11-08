@@ -5,7 +5,7 @@ import ViewCart from "./ViewCart"
 const ViewContent = props => {
   return (
     <>
-      <Table color="violet" key="violet">
+      <Table color="red" key="red">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Customer Name</Table.HeaderCell>

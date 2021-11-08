@@ -45,12 +45,12 @@ const CheckOutModal = forwardRef((props, ref) => {
       <Modal.Content>
         <Form size={"small"}>
           <Form.Field>
-            <label>Input infomation</label>
+            <label>Note</label>
             <textarea
               onChange={e => {
                 setInfomation(e.target.value)
               }}
-              placeholder="Input infomation"
+              placeholder="Note"
             />
           </Form.Field>
         </Form>
